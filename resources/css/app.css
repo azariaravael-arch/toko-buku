@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@theme {
+    --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-serif: "Playfair Display", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+
+    --color-primary-50: oklch(0.97 0.01 256.09);
+    --color-primary-100: oklch(0.93 0.03 256.09);
+    --color-primary-200: oklch(0.87 0.06 256.09);
+    --color-primary-300: oklch(0.78 0.11 256.09);
+    --color-primary-400: oklch(0.66 0.16 256.09);
+    --color-primary-500: oklch(0.55 0.2 256.09);
+    --color-primary-600: oklch(0.48 0.18 256.09);
+    --color-primary-700: oklch(0.4 0.15 256.09);
+    --color-primary-800: oklch(0.33 0.12 256.09);
+    --color-primary-900: oklch(0.28 0.1 256.09);
+    --color-primary-950: oklch(0.19 0.07 256.09);
+
+    --color-accent-peach: oklch(0.92 0.05 48.65);
+    --color-accent-mint: oklch(0.94 0.04 163.48);
+    --color-accent-lavender: oklch(0.93 0.04 286.04);
+    --color-accent-cream: oklch(0.97 0.03 84.15);
+}
+
+@layer base {
+    body {
+        @apply font-sans antialiased text-gray-900 bg-white;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-serif;
+    }
+}
+
+@layer components {
+    .btn-primary {
+        @apply inline-flex items-center px-6 py-3 bg-gray-900 text-white font-semibold text-sm uppercase tracking-widest hover:bg-gray-800 focus:bg-gray-800 active:bg-black focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition ease-in-out duration-150 rounded-none;
+    }
+
+    .card-category {
+        @apply p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-none flex flex-col items-center text-center gap-4;
+    }
+
+    .book-card {
+        @apply relative transition-all duration-300;
+    }
+
+    .book-cover-wrapper {
+        @apply relative aspect-[3/4] overflow-hidden bg-gray-100 mb-4 shadow-md transition-all duration-300;
+
+        .book-card:hover & {
+            @apply shadow-xl;
+        }
+    }
+
+    .book-cover {
+        @apply w-full h-full object-cover transition-transform duration-500;
+
+        .book-card:hover & {
+            @apply scale-105;
+        }
+    }
+
+    .glass-nav {
+        @apply sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100;
+    }
+}
