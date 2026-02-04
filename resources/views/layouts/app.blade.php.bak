@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Perpustakaan</title>
+</head>
+<body>
+    <nav>
+        <a href="/admin/dashboard">Dashboard</a>
+        <a href="/categories">Kategori</a>
+        <a href="/books">Buku</a>
+    </nav>
+
+    <hr>
+
+    @yield('content')
+</body>
+</html>

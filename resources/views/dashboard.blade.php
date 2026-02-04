@@ -80,24 +80,28 @@
                                 class="text-[10px] uppercase tracking-widest font-bold text-primary-500">View All</a>
                         </div>
                         <div class="divide-y divide-gray-50">
-                            @foreach($stats['recent_books'] as $book)
-                                <div class="p-8 flex items-center gap-6 group">
-                                    <div class="w-16 h-20 bg-gray-100 overflow-hidden shadow-sm flex-shrink-0">
-                                        <img src="{{ $book->cover ? asset('storage/' . $book->cover) : 'https://placehold.co/100x120?text=' . urlencode($book->title) }}"
-                                            class="w-full h-full object-cover">
+                            @if(isset($stats['recent_books']) && $stats['recent_books']->isNotEmpty())
+                                @foreach($stats['recent_books'] as $book)
+                                    <div class="p-8 flex items-center gap-6 group">
+                                        <div class="w-16 h-20 bg-gray-100 overflow-hidden shadow-sm flex-shrink-0">
+                                            <img src="{{ $book->cover ? asset('storage/' . $book->cover) : 'https://placehold.co/100x120?text=' . urlencode($book->title) }}"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-[9px] uppercase font-bold text-primary-500 mb-1">
+                                                {{ $book->category->name }}</p>
+                                            <h4 class="text-sm font-bold text-gray-900">{{ $book->title }}</h4>
+                                            <p class="text-[11px] text-gray-400">{{ $book->author }}</p>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="text-[10px] uppercase text-gray-300 font-bold mb-1">Stock</p>
+                                            <p class="text-lg font-serif font-bold text-gray-900">{{ $book->stock }}</p>
+                                        </div>
                                     </div>
-                                    <div class="flex-1">
-                                        <p class="text-[9px] uppercase font-bold text-primary-500 mb-1">
-                                            {{ $book->category->name }}</p>
-                                        <h4 class="text-sm font-bold text-gray-900">{{ $book->title }}</h4>
-                                        <p class="text-[11px] text-gray-400">{{ $book->author }}</p>
-                                    </div>
-                                    <div class="text-right">
-                                        <p class="text-[10px] uppercase text-gray-300 font-bold mb-1">Stock</p>
-                                        <p class="text-lg font-serif font-bold text-gray-900">{{ $book->stock }}</p>
-                                    </div>
-                                </div>
-                            @endforeach
+                                @endforeach
+                            @else
+                                <div class="p-8 text-center text-gray-400">No recent books to show.</div>
+                            @endif
                         </div>
                     </div>
                 </div>
