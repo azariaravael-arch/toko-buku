@@ -38,7 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 
 
@@ -47,7 +47,13 @@ Route::middleware(['auth', 'role:admin|petugas'])->group(function () {
 });
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\UserController;
 
 Route::middleware(['auth', 'role:admin|petugas'])->group(function () {
     Route::resource('books', BookController::class);
 });
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::resource('users', UserController::class);
+});
+

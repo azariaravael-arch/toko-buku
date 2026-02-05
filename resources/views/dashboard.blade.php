@@ -10,9 +10,13 @@
             </div>
             @if(Auth::user()->role !== 'siswa')
                 <div class="flex gap-2">
+                    @if(Auth::user()->role === 'admin')
+                        <a href="{{ route('users.index') }}" class="btn-primary bg-primary-600 text-[10px] py-2 px-4">Manage Users</a>
+                    @endif
                     <a href="{{ route('books.create') }}" class="btn-primary text-[10px] py-2 px-4">Add New Book</a>
                 </div>
             @endif
+
         </div>
     </x-slot>
 

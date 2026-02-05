@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,13 +15,15 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+
 <body class="font-sans antialiased bg-gray-50 text-gray-900">
     <header class="glass-nav px-4">
         <div class="max-w-7xl mx-auto flex items-center justify-between py-4">
             <div class="flex items-center gap-4">
                 <a href="/" class="flex items-center gap-2">
                     <x-application-logo class="w-8 h-8" />
-                    <span class="font-serif font-bold text-lg">BOOK<span class="text-primary-400 italic">WORM</span></span>
+                    <span class="font-serif font-bold text-lg">BOOK<span
+                            class="text-primary-400 italic">WORM</span></span>
                 </a>
                 <nav class="hidden md:flex items-center gap-4">
                     @auth
@@ -29,8 +32,13 @@
                         <a href="/" class="text-sm text-gray-700 hover:text-gray-900">Dashboard</a>
                     @endauth
 
-                    <a href="{{ route('categories.index') }}" class="text-sm text-gray-700 hover:text-gray-900">Kategori</a>
+                    <a href="{{ route('categories.index') }}"
+                        class="text-sm text-gray-700 hover:text-gray-900">Kategori</a>
                     <a href="{{ route('books.index') }}" class="text-sm text-gray-700 hover:text-gray-900">Buku</a>
+                    @if(Auth::check() && Auth::user()->role === 'admin')
+                        <a href="{{ route('users.index') }}" class="text-sm text-gray-700 hover:text-gray-900">Users</a>
+                    @endif
+
                 </nav>
             </div>
 
@@ -72,4 +80,5 @@
         </div>
     </footer>
 </body>
+
 </html>

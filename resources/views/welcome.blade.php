@@ -61,9 +61,9 @@
                     <div class="card-category {{ $colors[$index % count($colors)] }}">
                         <div class="mb-2">{!! $icons[$index % count($icons)] !!}</div>
                         <h3 class="text-sm font-bold uppercase tracking-tight text-gray-900">{{ $category->name }}</h3>
-                        <a href="#"
-                            class="text-[10px] uppercase tracking-widest font-bold text-gray-500 hover:text-gray-900 transition">Shop
-                            Now</a>
+                        <a href="#featured"
+                            class="text-[10px] uppercase tracking-widest font-bold text-gray-500 hover:text-gray-900 transition">Explore</a>
+
                     </div>
                 @endforeach
             </div>
@@ -103,9 +103,9 @@
                         <h4 class="text-sm font-bold text-gray-900 line-clamp-1 mb-1">{{ $book->title }}</h4>
                         <p class="text-[11px] text-gray-400 font-medium mb-2">{{ $book->author }}</p>
                         <div class="flex items-center gap-2">
-                            <span class="text-sm font-bold text-gray-900">$14.20</span>
-                            <span class="text-[10px] text-gray-300 line-through">$18.00</span>
+                            <span class="text-xs font-bold text-gray-900">Books Collection</span>
                         </div>
+
                     </div>
                 @endforeach
             </div>
@@ -116,9 +116,9 @@
             <h2 class="text-4xl font-serif mb-8 text-center italic">Featured Books</h2>
             <div class="flex justify-center gap-8 mb-12 border-b border-gray-100 italic font-serif">
                 <button class="pb-4 border-b-2 border-primary-500 text-gray-900">Featured</button>
-                <button class="pb-4 text-gray-400 hover:text-gray-900 transition">On Sale</button>
                 <button class="pb-4 text-gray-400 hover:text-gray-900 transition">Most Viewed</button>
             </div>
+
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 text-left">
                 @foreach($featuredBooks as $book)
                     <div class="book-card group scale-90">
@@ -130,7 +130,8 @@
                             class="text-[9px] uppercase font-bold text-gray-400 mb-1 block">{{ $book->category->name }}</span>
                         <h4 class="text-xs font-bold text-gray-900 line-clamp-1 mb-0.5">{{ $book->title }}</h4>
                         <p class="text-[10px] text-gray-400 mb-1">{{ $book->author }}</p>
-                        <span class="text-xs font-bold text-gray-900">$10.29</span>
+                        <span class="text-xs font-bold text-gray-900">Coming Soon</span>
+
                     </div>
                 @endforeach
             </div>

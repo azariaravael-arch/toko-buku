@@ -53,6 +53,14 @@
                             {{ __('Books') }}
                         </x-nav-link>
                     @endif
+
+                    @if(Auth::check() && Auth::user()->role === 'admin')
+                        <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')"
+                            class="text-xs uppercase tracking-widest font-bold">
+                            {{ __('Users') }}
+                        </x-nav-link>
+                    @endif
+
                 </div>
             </div>
 
